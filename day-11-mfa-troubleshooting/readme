@@ -1,0 +1,85 @@
+# Day 11 — Microsoft Entra ID MFA Troubleshooting
+
+## 1. Objective
+
+Learn how to investigate Microsoft Entra ID multi-factor authentication (MFA) failures using sign-in logs and registered authentication methods.
+
+## 2. Lab Environment
+
+- **Platform:** Microsoft Entra admin center
+- **Lab type:** Authentication-method inspection and simulated troubleshooting scenario
+- **Access:** Authentication methods page opened successfully
+- **Tools:** Entra ID sign-in logs and user authentication methods
+
+## 3. Key Concepts
+
+- **Authentication methods:** Methods users can use to verify their identity, such as Microsoft Authenticator or a security key.
+- **MFA:** Requires multiple authentication factors to verify a user's identity.
+- **Conditional Access:** Evaluates configured access policies and can require MFA or other conditions.
+- **Sign-in logs:** Record information about sign-in attempts, authentication steps, and policy evaluation.
+
+## 4. Lab Procedure
+
+1. Open the Microsoft Entra admin center.
+2. Navigate to Entra ID → Users → All users.
+3. Open an authorized lab user's profile.
+4. Select Authentication methods.
+5. Confirm that at least one authentication method is registered.
+6. Review a sign-in event and inspect Authentication Details and Conditional Access, where available.
+
+## 5. Findings
+
+| Check | Result |
+|---|---|
+| Authentication methods page | Accessible |
+| Registered authentication method | At least one method listed |
+| Initial troubleshooting action | Investigate the failed authentication step |
+| Root cause | Not confirmed |
+
+**Note:** A registered authentication method does not prove that MFA succeeded or that the method is currently usable.
+
+## 6. Simulated Troubleshooting Scenario
+
+**User report:** "I can enter my password, but I cannot complete MFA."
+
+**Simulated sign-in evidence:**
+- Password: Success
+- MFA: Failed or not completed
+- Conditional Access: Failure
+
+**Investigation plan:**
+
+1. Inspect the MFA authentication step and its failure details.
+2. Determine whether MFA was required and identify the relevant Conditional Access policy.
+3. Confirm which authentication method is registered and whether the user can access it.
+4. Follow the approved recovery process if the method is unavailable or malfunctioning.
+5. Verify the outcome using a subsequent sign-in event, if available.
+
+## 7. Troubleshooting Outcome
+
+The authentication methods page was accessible, and at least one method was registered. The next step is to investigate the authentication failure details.
+
+The root cause and resolution remain unconfirmed because no specific failed authentication event has been verified.
+
+## 8. Security Considerations
+
+- Do not disable MFA for all users to resolve one user's issue.
+- Do not request passwords or MFA verification codes.
+- Do not remove authentication methods without authorization.
+- Follow approved identity-verification and account-recovery procedures.
+- Redact usernames, IP addresses, tenant IDs, and other sensitive information from public screenshots.
+
+## 9. What I Learned
+
+I learned that a successful password check does not guarantee successful MFA. Troubleshooting requires checking the authentication details, registered methods, and Conditional Access evaluation before deciding on a resolution.
+
+## 10. Lab Status
+
+- [x] Accessed the Authentication methods page
+- [x] Confirmed that a method was registered
+- [x] Identified the next troubleshooting action
+- [ ] Inspected the detailed MFA failure reason
+- [ ] Confirmed the root cause
+- [ ] Verified a resolution
+
+**Status:** In progress — investigation and resolution are not yet confirmed.
