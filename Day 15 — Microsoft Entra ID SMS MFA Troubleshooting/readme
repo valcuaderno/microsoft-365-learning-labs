@@ -1,0 +1,48 @@
+# Day 15 — Microsoft Entra ID SMS MFA Troubleshooting
+
+## 1. Incident Summary
+- **Ticket:** INC-015
+- **Category:** Identity and Access Management
+- **Issue:** Sign-in interrupted when the user attempted SMS multi-factor authentication.
+- **Final test result:** Microsoft Authenticator sign-in succeeded.
+
+## 2. Environment
+- Microsoft Entra ID Free-tier access
+- Registered authentication methods: SMS and Microsoft Authenticator
+- Conditional Access policy details were unavailable for investigation.
+
+## 3. Evidence Collected
+- Reported error code: `399287`
+- Failure reason: `Multi-factor authentication method is blocked`
+- Authentication status: Interrupted
+- SMS result detail: No additional detail displayed
+- Microsoft Authenticator test: Successful
+
+## 4. Investigation and Actions
+1. Reviewed the failed Entra ID sign-in event.
+2. Inspected the reported authentication failure and available sign-in details.
+3. Verified that SMS and Microsoft Authenticator were registered.
+4. Tested Microsoft Authenticator as an alternative authentication method.
+5. Confirmed that Microsoft Authenticator sign-in succeeded.
+6. Avoided disabling MFA, changing tenant-wide policies, or resetting the password without supporting evidence.
+
+## 5. Findings
+The successful Authenticator sign-in demonstrates that this alternative authentication method worked during the test. The SMS failure appears specific to the attempted SMS authentication flow.
+
+The exact cause of the SMS block remains unconfirmed. The available evidence is insufficient to conclusively attribute it to phone reputation, tenant configuration, or another restriction.
+
+## 6. Recommended Follow-up
+- Keep Microsoft Authenticator available as the working sign-in method.
+- Avoid repeated SMS attempts while the cause remains unclear.
+- If SMS access is required, review the exact error and sign-in diagnostics or escalate to Microsoft support with the relevant event identifiers through an authorized channel.
+- Retest and document SMS only after the cause has been investigated.
+
+## 7. Incident Status
+**Partially resolved — alternative authentication verified; SMS failure still under investigation.**
+
+## 8. Skills Practiced
+- Entra ID sign-in log investigation
+- MFA troubleshooting
+- Evidence-based root-cause analysis
+- Safe authentication recovery
+- Incident documentation and escalation
